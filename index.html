@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>랜딩 이미지</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+	<style type="text/css">
+		html{background: #202430; width: 1920px; height: 1080px; margin: 0; padding: 0; font-family: "TheSeasons-BdIt" 'Noto Sans KR', sans-serif; }
+		section { width: 1920px; height: 1080px; margin: 0; padding: 0; }
+
+@font-face{font-family: "TheSeasons-BdIt";
+               src:local(※), url(TheSeasons-BdIt.otf)format("opentype"),
+                  url('TheSeasons-BdIt.woff') format('woff');}
+
+		.container{width: 1920px; height: 5px; color: #DADEE9;}
+		.red{background-color: red;}
+		.blue{background-color: blue ;}
+
+		#emptydiv{width: 1920px; height:140px;margin: 0; padding: 0;  }
+		#teamdiv{width: 1920px; height: 96px;margin: 0; padding: 0;display: flex; font-family: "TheSeasons-BdIt"; font-size: 48px;}
+		#titlediv{width: 1920px; height: 523px;margin: 0; padding: 0;}
+		#informationdiv{width: 1920px; height: 321px;margin-top:0px; padding: 0; font-family: "TheSeasons-BdIt"; font-size: 48px;}
+
+		#emptybox-empty{width: 1492px;}
+		#emptybox-text{width: 425px;}
+
+		#information-empty1{height: 130px; width: 1920px;}
+		#information-text{display: flex;}
+		#information-text1 	{width: 73px; height: 190px;}
+		#information-text2	{width: 228px; height: 190px;}
+		#information-text3	{width: 1188px; height: 190px;}
+		#information-text4	{width: 370px; height: 190px;}
+		#information-text5	{width: 61px; height: 190px;}
+
+    .fonts_in_my_counmputer{font-family: 'The Season', serif;}
+    
+
+
+		.nav{margin:10px; display: none;}
+.RollDiv{margin:0 auto; width:1920px; height:523px;overflow:hidden;}  
+.RollDiv > div{overflow:hidden;height:523px;width:1920px}
+.RollDiv > div > a{ float:left; display:block;}  
+.RollDiv > div > a > img{ width:width:1920px; height:523px;margin-right:10px;}
+	</style>
+	 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	
+<section>
+	<!-- /*1번 섹션*/ -->
+	<div id="emptydiv" class="container blue">
+	</div>
+	<hr width = "1920px" color = "#DADEE9" size = "1">
+
+	<!-- /*2번 팀 섹션*/ -->
+	<div id="teamdiv" class="container"  >
+		<div id="emptybox-empty" class="red">Empty</div>
+		<div id="emptybox-text" class="blue">Team. Two Hyun</div>
+	</div>
+	<hr width = "1920px" color = "#DADEE9" size = "1">
+
+	<!-- /*3번 제목 섹션*/ -->
+	<div id="titlediv" class="container">
+	
+		 <div class="nav">
+  <button onClick="moveType=0;">왼쪽으로</button>  
+  <button onClick="moveType=1;">오른쪽으로</button>  
+  <button onClick="movePause=true;">일시정지</button>  
+  <button onClick="goMove();">움직이기</button>  
+  </div>
+  <div class="RollDiv">  
+    <div>  
+      <a href=""><img src="title.png" /></a>  
+      <a href=""><img src="title1.png" /></a>  
+      <a href=""><img src="title.png" /></a>  
+      <a href=""><img src="title1.png" /></a>  
+      <a href=""><img src="title.png" /></a>  
+      <a href=""><img src="title1.png" /></a>  
+      <a href=""><img src="title.png" /></a>  
+    </div>  
+  </div>   
+	</div>
+	<hr width = "1920px" color = "#DADEE9" size = "1">
+	<!-- /*4번 인포메이션 섹션*/ -->
+	<div id="informationdiv" class="container">
+		<div id="information-empty1" class="red"> empty</div>
+		<div id="information-text">
+			<div id="information-text1" class="blue">1</div>
+			<div id="information-text2" class="red">
+				<div>Exhibition</div>
+				<div>옥타린: 연(緣)</div>
+			</div>
+			<div id="information-text3" class="blue">3</div>
+			<div id="information-text4" class="red">
+				<div>Gallary lamer</div>
+				<div>2022.01.26 - 2022.02.07</div>
+			</div>
+			<div id="information-text5" class="blue">5</div>
+		</div>
+		
+	
+	</div>
+
+</section>
+<script type="text/javascript">
+var moveType = 0; 
+var moveSpeed = 3000; 
+var moveWork = false; 
+var movePause = false; 
+function imgMove(){ 
+    if(moveWork==false){ 
+      if(moveType==0){ 
+         var aWidth = $(".RollDiv > div > a:first").width(); 
+         $(".RollDiv > div").append("<a href=\""+$(".RollDiv > div > a:first").attr("href")+"\">" + $(".RollDiv > div > a:first").html()+ "</a>"); 
+         $(".RollDiv > div > a:first").animate({marginLeft:-aWidth},{duration:moveSpeed,step:function(){ 
+         if(movePause==true){ 
+            $(this).stop(); 
+         } 
+         },complete:function(){ 
+         $(this).remove(); 
+         imgMove(); 
+      }}); 
+      }else{ 
+       var aWidth = $(".RollDiv > div > a:last").width(); 
+       $("<a href=\"" + $(".RollDiv > div > a:last").attr("href")+ "\" style=\"margin-left:-" + aWidth + "px\">" + $(".RollDiv > div > a:last").html()+ "</a>").insertBefore(".RollDiv > div > a:first") 
+      $(".RollDiv > div > a:first").animate({marginLeft:0},{duration:moveSpeed,step:function(){ 
+       if(movePause==true){ 
+          $(this).stop(); 
+       } 
+       },complete:function(){ 
+       $(".RollDiv > div > a:last").remove(); 
+       imgMove(); 
+    }}); 
+ } 
+ } 
+ } 
+ function goMove(){ 
+    movePause=false; 
+    if(moveType==0){ 
+       imgMove(); 
+       }else{ 
+       $(".RollDiv > div > a:first").animate({marginLeft:0},{duration:moveSpeed,step:function(){ 
+       if(movePause==true){ 
+          $(this).stop(); 
+      } 
+       },complete:function(){ 
+      imgMove(); 
+   }}); 
+}
+   
+}
+imgMove(); 
+</script>
+</body>
+</html>
